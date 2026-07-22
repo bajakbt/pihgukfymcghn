@@ -26,7 +26,6 @@ const couponsRoutes = require("./routes/coupons");
 const broadcastsRoutes = require("./routes/broadcasts");
 const settingsRoutes = require("./routes/settings");
 const logsRoutes = require("./routes/logs");
-const databaseRoutes = require("./routes/database");
 
 // ============================================
 // APP
@@ -512,7 +511,6 @@ app.use("/api/coupons", couponsRoutes(db));
 app.use("/api/broadcasts", broadcastsRoutes(db));
 app.use("/api/settings", settingsRoutes(db));
 app.use("/api/logs", logsRoutes(db));
-app.use("/api/database", databaseRoutes(db));
 
 // ============================================
 // START SERVER
