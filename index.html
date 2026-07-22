@@ -1,0 +1,4323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CardBridge | Global Digital Marketplace</title>
+
+<meta
+name="description"
+content="Professional global marketplace for digital products including PUBG UC, Telegram Stars, Gift Cards, Steam, PlayStation and more.">
+
+<meta
+name="keywords"
+content="PUBG UC, Telegram Stars, Telegram Premium, Steam, PlayStation, Gift Cards, Google Play, Digital Marketplace">
+
+<meta
+name="theme-color"
+content="#09090B">
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:#09090B;
+
+color:#FFFFFF;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+button{
+
+border:none;
+
+outline:none;
+
+cursor:pointer;
+
+font-family:inherit;
+
+}
+
+input{
+
+border:none;
+
+outline:none;
+
+font-family:inherit;
+
+}
+
+img{
+
+display:block;
+
+max-width:100%;
+
+}
+
+:root{
+
+--primary:#6C4CF5;
+
+--secondary:#8B5CF6;
+
+--gold:#FACC15;
+
+--green:#22C55E;
+
+--red:#EF4444;
+
+--bg:#09090B;
+
+--card:#111116;
+
+--card2:#18181F;
+
+--border:#262630;
+
+--text:#F8FAFC;
+
+--gray:#94A3B8;
+
+--radius:20px;
+
+--shadow:0 20px 60px rgba(0,0,0,.45);
+
+--transition:.30s;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-250px;
+
+right:-250px;
+
+width:600px;
+
+height:600px;
+
+background:rgba(108,76,245,.18);
+
+filter:blur(170px);
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+left:-250px;
+
+bottom:-250px;
+
+width:650px;
+
+height:650px;
+
+background:rgba(250,204,21,.08);
+
+filter:blur(190px);
+
+z-index:-2;
+
+}
+
+.container{
+
+width:92%;
+
+max-width:1450px;
+
+margin:auto;
+
+}
+
+.page{
+
+display:none;
+
+animation:fade .35s;
+
+}
+
+.page.active{
+
+display:block;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+#loader{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:#09090B;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:999999;
+
+transition:.5s;
+
+}
+
+.loader{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+border:5px solid #262630;
+
+border-top:5px solid var(--primary);
+
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:82px;
+
+background:rgba(9,9,11,.96);
+
+backdrop-filter:blur(16px);
+
+border-bottom:1px solid var(--border);
+
+z-index:9999;
+
+}
+
+.navbar{
+
+height:82px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:28px;
+
+font-weight:800;
+
+color:var(--gold);
+
+}
+
+.logo i{
+
+font-size:30px;
+
+}
+
+.desktop-menu{
+
+display:flex;
+
+gap:38px;
+
+}
+
+.desktop-menu a{
+
+font-weight:500;
+
+transition:.25s;
+
+}
+
+.desktop-menu a:hover{
+
+color:var(--gold);
+
+}
+
+.header-buttons{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+}
+
+.login-btn{
+
+height:46px;
+
+padding:0 24px;
+
+background:#1A1A24;
+
+color:#FFFFFF;
+
+border-radius:12px;
+
+font-weight:600;
+
+}
+
+.register-btn{
+
+height:46px;
+
+padding:0 24px;
+
+background:var(--primary);
+
+color:#FFFFFF;
+
+border-radius:12px;
+
+font-weight:600;
+
+}
+
+.mobile-btn{
+
+display:none;
+
+width:46px;
+
+height:46px;
+
+background:#1A1A24;
+
+border-radius:12px;
+
+color:#FFFFFF;
+
+}
+
+#mobileMenu{
+
+display:none;
+
+position:fixed;
+
+top:82px;
+
+left:0;
+
+width:100%;
+
+background:#111116;
+
+border-bottom:1px solid var(--border);
+
+padding:25px;
+
+z-index:9998;
+
+}
+
+#mobileMenu a{
+
+display:block;
+
+padding:15px 0;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.hero{
+
+padding-top:155px;
+
+padding-bottom:110px;
+
+}
+
+.hero-grid{
+
+display:grid;grid-template-columns:1.2fr .8fr;
+
+gap:70px;
+
+align-items:center;
+
+}
+.hero-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:10px 18px;
+
+background:#151520;
+
+border:1px solid var(--border);
+
+border-radius:50px;
+
+margin-bottom:28px;
+
+}
+
+.hero-badge i{
+
+color:var(--gold);
+
+}
+
+.hero h1{
+
+font-size:64px;
+
+line-height:1.15;
+
+margin-bottom:25px;
+
+font-weight:800;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#B8B8B8;
+
+margin-bottom:35px;
+
+max-width:650px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+height:56px;
+
+padding:0 32px;
+
+border-radius:14px;
+
+background:var(--gold);
+
+color:#111111;
+
+font-weight:700;
+
+transition:var(--transition);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.secondary-btn{
+
+height:56px;
+
+padding:0 32px;
+
+border-radius:14px;
+
+background:#1A1A24;
+
+color:#FFFFFF;
+
+border:1px solid var(--border);
+
+transition:var(--transition);
+
+}
+
+.secondary-btn:hover{
+
+border-color:var(--primary);
+
+}
+
+.hero-card{
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:24px;
+
+padding:35px;
+
+box-shadow:var(--shadow);
+
+}
+
+.hero-stat{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:18px 0;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.hero-stat:last-child{
+
+border-bottom:none;
+
+}
+
+.hero-stat strong{
+
+color:var(--gold);
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+margin-bottom:12px;
+
+}
+
+.section-title p{
+
+color:var(--gray);
+
+font-size:17px;
+
+}
+
+#categories{
+
+padding:100px 0;
+
+}
+
+.categories-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:30px;
+
+}
+
+.category-card{
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:22px;
+
+padding:35px;
+
+text-align:center;
+
+transition:var(--transition);
+
+}
+
+.category-card:hover{
+
+transform:translateY(-8px);
+
+border-color:var(--primary);
+
+box-shadow:var(--shadow);
+
+}
+
+.category-icon{
+
+width:78px;
+
+height:78px;
+
+margin:auto;
+
+margin-bottom:25px;
+
+border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:rgba(108,76,245,.15);
+
+}
+
+.category-icon i{
+
+font-size:34px;
+
+color:var(--gold);
+
+}
+
+.category-card h3{
+
+font-size:24px;
+
+margin-bottom:12px;
+
+}
+
+.category-card p{
+
+color:#B8B8B8;
+
+margin-bottom:24px;
+
+line-height:1.7;
+
+}
+
+.category-card button{
+
+width:100%;
+
+height:50px;
+
+border-radius:14px;
+
+background:var(--primary);
+
+color:#FFFFFF;
+
+font-weight:700;
+
+transition:var(--transition);
+
+}
+
+.category-card button:hover{
+
+background:var(--secondary);
+
+}
+
+#featuredProducts{
+
+padding:100px 0;
+
+}
+
+.products-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:30px;
+
+}
+
+.product-card{
+
+position:relative;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:22px;
+
+overflow:hidden;
+
+transition:var(--transition);
+
+}
+
+.product-card:hover{
+
+transform:translateY(-8px);
+
+border-color:var(--primary);
+
+box-shadow:var(--shadow);
+
+}
+
+.discount{
+
+position:absolute;
+
+top:18px;
+
+right:18px;
+
+background:var(--gold);
+
+color:#111111;
+
+padding:8px 14px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:700;
+
+z-index:5;
+
+}
+
+.product-image{
+
+height:220px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:linear-gradient(180deg,#202032,#13131A);
+
+}
+
+.product-image i{
+
+font-size:80px;
+
+color:var(--gold);
+
+}
+.product-content{
+
+padding:25px;
+
+}
+
+.product-category{
+
+display:inline-block;
+
+color:var(--gray);
+
+font-size:14px;
+
+margin-bottom:10px;
+
+}
+
+.product-content h3{
+
+font-size:25px;
+
+margin-bottom:18px;
+
+color:#FFFFFF;
+
+}
+
+.price-box{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+margin-bottom:25px;
+
+}
+
+.price-box h2{
+
+font-size:28px;
+
+color:var(--gold);
+
+}
+
+.price-box del{
+
+color:#777777;
+
+font-size:16px;
+
+}
+
+.product-buttons{
+
+display:flex;
+
+gap:12px;
+
+}
+
+.buy-btn{
+
+flex:1;
+
+height:50px;
+
+border-radius:12px;
+
+background:var(--primary);
+
+color:#FFFFFF;
+
+font-weight:700;
+
+font-size:15px;
+
+transition:var(--transition);
+
+}
+
+.buy-btn:hover{
+
+background:var(--secondary);
+
+}
+
+.cart-btn{
+
+width:50px;
+
+height:50px;
+
+border-radius:12px;
+
+background:#1C1C27;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+transition:var(--transition);
+
+}
+
+.cart-btn:hover{
+
+background:var(--gold);
+
+color:#111111;
+
+}
+
+.favorite-btn{
+
+width:50px;
+
+height:50px;
+
+border-radius:12px;
+
+background:#1C1C27;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+transition:var(--transition);
+
+}
+
+.favorite-btn:hover{
+
+background:#EF4444;
+
+}
+
+.modal{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+background:rgba(0,0,0,.72);
+
+backdrop-filter:blur(6px);
+
+z-index:20000;
+
+}
+
+.modal-box{
+
+width:100%;
+
+max-width:470px;
+
+background:#111116;
+
+border:1px solid var(--border);
+
+border-radius:22px;
+
+overflow:hidden;
+
+box-shadow:var(--shadow);
+
+}
+
+.modal-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:22px 25px;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.modal-header h2{
+
+font-size:24px;
+
+font-weight:700;
+
+}
+
+.modal-header button{
+
+background:none;
+
+font-size:24px;
+
+color:#FFFFFF;
+
+}
+
+.modal-body{
+
+padding:25px;
+
+}
+
+.input-group{
+
+margin-bottom:20px;
+
+}
+
+.input-group label{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:14px;
+
+color:var(--gray);
+
+}
+
+.input-group input{
+
+width:100%;
+
+height:56px;
+
+padding:0 18px;
+
+border-radius:14px;
+
+background:#1A1A24;
+
+border:1px solid var(--border);
+
+color:#FFFFFF;
+
+font-size:15px;
+
+transition:var(--transition);
+
+}
+
+.input-group input:focus{
+
+border-color:var(--primary);
+
+}
+
+.auth-btn{
+
+width:100%;
+
+height:56px;
+
+border-radius:14px;
+
+background:var(--primary);
+
+color:#FFFFFF;
+
+font-size:16px;
+
+font-weight:700;
+
+transition:var(--transition);
+
+}
+
+.auth-btn:hover{
+
+background:var(--secondary);
+
+}
+
+.switch-auth{
+
+margin-top:22px;
+
+text-align:center;
+
+color:var(--gray);
+
+}
+
+.switch-auth a{
+
+color:var(--gold);
+
+font-weight:700;
+
+}
+.cart-drawer{
+
+position:fixed;
+
+top:0;
+
+right:-460px;
+
+width:460px;
+
+max-width:100%;
+
+height:100%;
+
+background:#111116;
+
+border-left:1px solid var(--border);
+
+display:flex;
+
+flex-direction:column;
+
+transition:.35s;
+
+z-index:30000;
+
+box-shadow:-10px 0 40px rgba(0,0,0,.45);
+
+}
+
+.cart-drawer.active{
+
+right:0;
+
+}
+
+.drawer-header{
+
+height:80px;
+
+padding:0 25px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.drawer-header h2{
+
+font-size:24px;
+
+font-weight:700;
+
+}
+
+.drawer-header button{
+
+width:42px;
+
+height:42px;
+
+border-radius:12px;
+
+background:#1C1C27;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+}
+
+.drawer-body{
+
+flex:1;
+
+overflow-y:auto;
+
+padding:22px;
+
+}
+
+.drawer-footer{
+
+padding:22px;
+
+border-top:1px solid var(--border);
+
+}
+
+.cart-item{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:15px;
+
+padding:18px;
+
+margin-bottom:16px;
+
+border-radius:18px;
+
+background:#1A1A24;
+
+border:1px solid var(--border);
+
+}
+
+.cart-info{
+
+flex:1;
+
+}
+
+.cart-info h4{
+
+font-size:17px;
+
+margin-bottom:8px;
+
+}
+
+.cart-info p{
+
+color:var(--gold);
+
+font-size:15px;
+
+font-weight:700;
+
+}
+
+.cart-actions{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.qty-btn{
+
+width:34px;
+
+height:34px;
+
+border-radius:10px;
+
+background:#272733;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+}
+
+.remove-btn{
+
+width:40px;
+
+height:40px;
+
+border-radius:12px;
+
+background:#EF4444;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+}
+
+.cart-total{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+font-size:22px;
+
+font-weight:700;
+
+}
+
+.checkout-btn{
+
+width:100%;
+
+height:56px;
+
+border-radius:14px;
+
+background:var(--gold);
+
+color:#111111;
+
+font-size:17px;
+
+font-weight:700;
+
+transition:var(--transition);
+
+}
+
+.checkout-btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.empty-cart{
+
+text-align:center;
+
+padding:70px 20px;
+
+color:var(--gray);
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.badge{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+min-width:22px;
+
+height:22px;
+
+padding:0 7px;
+
+background:var(--red);
+
+color:#FFFFFF;
+
+font-size:12px;
+
+font-weight:700;
+
+border-radius:30px;
+
+}
+
+.toast{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+padding:16px 24px;
+
+background:#111116;
+
+border:1px solid var(--border);
+
+border-left:4px solid var(--green);
+
+border-radius:16px;
+
+transform:translateY(120px);
+
+opacity:0;
+
+transition:.35s;
+
+z-index:50000;
+
+box-shadow:var(--shadow);
+
+}
+
+.toast.show{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+.toast.error{
+
+border-left-color:var(--red);
+
+}
+
+.light-mode{
+
+background:#F8FAFC;
+
+color:#111111;
+
+}
+
+.light-mode .header,
+
+.light-mode .hero-card,
+
+.light-mode .category-card,
+
+.light-mode .product-card,
+
+.light-mode .modal-box,
+
+.light-mode .cart-drawer{
+
+background:#FFFFFF;
+
+color:#111111;
+
+}
+
+@media(max-width:1200px){
+
+.categories-grid,
+
+.products-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:900px){
+
+.hero-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+font-size:46px;
+
+}
+
+.desktop-menu,
+
+.login-btn,
+
+.register-btn{
+
+display:none;
+
+}
+
+.mobile-btn{
+
+display:block;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.categories-grid,
+
+.products-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero{
+
+padding-top:130px;
+
+}
+
+.hero h1{
+
+font-size:36px;
+
+}
+
+.cart-drawer{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+  <!-- ==========================================
+LOADER
+========================================== -->
+
+<div id="loader">
+
+<div class="loader"></div>
+
+</div>
+
+<!-- ==========================================
+HEADER
+========================================== -->
+
+<header class="header">
+
+<div class="container">
+
+<div class="navbar">
+
+<a href="#" class="logo">
+
+<i class="fa-solid fa-wallet"></i>
+
+<span>CardBridge</span>
+
+</a>
+
+<nav class="desktop-menu">
+
+<a href="#home">Home</a>
+
+<a href="#categories">Categories</a>
+
+<a href="#featuredProducts">Products</a>
+
+<a href="#support">Support</a>
+
+<a href="#footer">Contact</a>
+
+</nav>
+
+<div class="header-buttons">
+
+<button
+class="login-btn"
+onclick="showLogin()">
+
+Login
+
+</button>
+
+<button
+class="register-btn"
+onclick="showRegister()">
+
+Register
+
+</button>
+
+<button
+class="mobile-btn"
+onclick="toggleMobileMenu()">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ==========================================
+MOBILE MENU
+========================================== -->
+
+<div id="mobileMenu">
+
+<a href="#home">
+
+Home
+
+</a>
+
+<a href="#categories">
+
+Categories
+
+</a>
+
+<a href="#featuredProducts">
+
+Products
+
+</a>
+
+<a href="#support">
+
+Support
+
+</a>
+
+<a href="#footer">
+
+Contact
+
+</a>
+
+<hr style="margin:18px 0;border-color:#262630;">
+
+<button
+class="login-btn"
+style="width:100%;margin-bottom:12px;"
+onclick="showLogin()">
+
+Login
+
+</button>
+
+<button
+class="register-btn"
+style="width:100%;"
+onclick="showRegister()">
+
+Register
+
+</button>
+
+</div>
+
+<!-- ==========================================
+HOME PAGE
+========================================== -->
+
+<section
+id="home"
+class="page active">
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+
+<div class="hero-badge">
+
+<i class="fa-solid fa-bolt"></i>
+
+<span>
+
+GLOBAL DIGITAL MARKETPLACE
+
+</span>
+
+</div>
+
+<h1>
+
+Buy Games,
+
+Gift Cards,
+
+Telegram Premium
+
+& Digital Services
+
+Instantly.
+
+</h1>
+
+<p>
+
+CardBridge is a professional marketplace for digital products.
+
+Purchase PUBG UC, Telegram Stars, Steam Wallet, PlayStation,
+
+Google Play, Apple Gift Cards and many more with instant delivery,
+
+secure payments and reseller prices.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+onclick="goProducts()">
+
+Browse Products
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="openCart()">
+
+Deposit Balance
+
+</button>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="hero-card">
+
+<div class="hero-stat">
+
+<span>
+
+Products
+
+</span>
+
+<strong>
+
+1,500+
+
+</strong>
+
+</div>
+
+<div class="hero-stat">
+
+<span>
+
+Orders Today
+
+</span>
+
+<strong>
+
+245
+
+</strong>
+
+</div>
+
+<div class="hero-stat">
+
+<span>
+
+Countries
+
+</span>
+
+<strong>
+
+150+
+
+</strong>
+
+</div>
+
+<div class="hero-stat">
+
+<span>
+
+Wallet Balance
+
+</span>
+
+<strong id="heroBalance">
+
+0.00 USD
+
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+  <!-- ==========================================
+FEATURED CATEGORIES
+========================================== -->
+
+<section id="categories">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Explore Categories
+
+</h2>
+
+<p>
+
+Choose your favorite digital products with instant delivery.
+
+</p>
+
+</div>
+
+<div class="categories-grid">
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-solid fa-crosshairs"></i>
+
+</div>
+
+<h3>
+
+PUBG MOBILE
+
+</h3>
+
+<p>
+
+UC Codes & Game ID Recharge
+
+</p>
+
+<button onclick="filterCategory('PUBG')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-solid fa-fire"></i>
+
+</div>
+
+<h3>
+
+Free Fire
+
+</h3>
+
+<p>
+
+Diamonds & Membership
+
+</p>
+
+<button onclick="filterCategory('Free Fire')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-brands fa-telegram"></i>
+
+</div>
+
+<h3>
+
+Telegram
+
+</h3>
+
+<p>
+
+Premium & Telegram Stars
+
+</p>
+
+<button onclick="filterCategory('Telegram')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-solid fa-gift"></i>
+
+</div>
+
+<h3>
+
+Gift Cards
+
+</h3>
+
+<p>
+
+Steam • PSN • Apple • Google
+
+</p>
+
+<button onclick="filterCategory('Gift')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-brands fa-steam"></i>
+
+</div>
+
+<h3>
+
+Steam
+
+</h3>
+
+<p>
+
+Steam Wallet Codes
+
+</p>
+
+<button onclick="filterCategory('Steam')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-brands fa-playstation"></i>
+
+</div>
+
+<h3>
+
+PlayStation
+
+</h3>
+
+<p>
+
+USA Gift Cards
+
+</p>
+
+<button onclick="filterCategory('PlayStation')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-brands fa-google-play"></i>
+
+</div>
+
+<h3>
+
+Google Play
+
+</h3>
+
+<p>
+
+Gift Cards
+
+</p>
+
+<button onclick="filterCategory('Google')">
+
+View Products
+
+</button>
+
+</div>
+
+<div class="category-card">
+
+<div class="category-icon">
+
+<i class="fa-brands fa-apple"></i>
+
+</div>
+
+<h3>
+
+Apple
+
+</h3>
+
+<p>
+
+App Store & iTunes Cards
+
+</p>
+
+<button onclick="filterCategory('Apple')">
+
+View Products
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+FEATURED PRODUCTS
+========================================== -->
+
+<section id="featuredProducts">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Featured Products
+
+</h2>
+
+<p>
+
+Best Sellers • Instant Delivery • Secure Purchase
+
+</p>
+
+</div>
+
+<div class="products-grid">
+    <!-- PUBG -->
+
+<div class="product-card">
+
+<div class="discount">
+
+BEST
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-solid fa-crosshairs"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+PUBG MOBILE
+
+</span>
+
+<h3>
+
+3850 UC
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+43.00 USD
+
+</h2>
+
+<del>
+
+50.00 USD
+
+</del>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('PUBG MOBILE 3850 UC',43)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('PUBG MOBILE 3850 UC',43)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('PUBG MOBILE 3850 UC',43)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PUBG -->
+
+<div class="product-card">
+
+<div class="discount">
+
+HOT
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-solid fa-crosshairs"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+PUBG MOBILE
+
+</span>
+
+<h3>
+
+8100 UC
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+83.00 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('PUBG MOBILE 8100 UC',83)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('PUBG MOBILE 8100 UC',83)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('PUBG MOBILE 8100 UC',83)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Telegram Stars -->
+
+<div class="product-card">
+
+<div class="discount">
+
+POPULAR
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-brands fa-telegram"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+Telegram Stars
+
+</span>
+
+<h3>
+
+1000 Stars
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+14.99 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('Telegram Stars 1000',14.99)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('Telegram Stars 1000',14.99)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('Telegram Stars 1000',14.99)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Telegram Premium -->
+
+<div class="product-card">
+
+<div class="discount">
+
+VIP
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-brands fa-telegram"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+Telegram Premium
+
+</span>
+
+<h3>
+
+12 Months
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+26.99 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('Telegram Premium 12 Months',26.99)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('Telegram Premium 12 Months',26.99)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('Telegram Premium 12 Months',26.99)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Steam -->
+
+<div class="product-card">
+
+<div class="discount">
+
+HOT
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-brands fa-steam"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+Steam Wallet
+
+</span>
+
+<h3>
+
+50 USD
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+41.50 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('Steam Wallet 50 USD',41.50)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('Steam Wallet 50 USD',41.50)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('Steam Wallet 50 USD',41.50)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+<!-- PlayStation -->
+
+<div class="product-card">
+
+<div class="discount">
+
+USA
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-brands fa-playstation"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+PlayStation
+
+</span>
+
+<h3>
+
+100 USD
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+80.00 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('PlayStation 100 USD',80)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('PlayStation 100 USD',80)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('PlayStation 100 USD',80)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Apple -->
+
+<div class="product-card">
+
+<div class="discount">
+
+APPLE
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-brands fa-apple"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+Apple Gift Card
+
+</span>
+
+<h3>
+
+100 USD
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+82.00 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('Apple Gift Card 100 USD',82)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('Apple Gift Card 100 USD',82)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('Apple Gift Card 100 USD',82)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Google Play -->
+
+<div class="product-card">
+
+<div class="discount">
+
+NEW
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-brands fa-google-play"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+Google Play
+
+</span>
+
+<h3>
+
+25 USD
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+21.00 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('Google Play 25 USD',21)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('Google Play 25 USD',21)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('Google Play 25 USD',21)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Free Fire -->
+
+<div class="product-card">
+
+<div class="discount">
+
+TOP
+
+</div>
+
+<div class="product-image">
+
+<i class="fa-solid fa-fire"></i>
+
+</div>
+
+<div class="product-content">
+
+<span class="product-category">
+
+Free Fire
+
+</span>
+
+<h3>
+
+1080 Diamonds
+
+</h3>
+
+<div class="price-box">
+
+<h2>
+
+8.20 USD
+
+</h2>
+
+</div>
+
+<div class="product-buttons">
+
+<button
+class="buy-btn"
+onclick="buyProduct('Free Fire 1080 Diamonds',8.20)">
+
+Buy Now
+
+</button>
+
+<button
+class="cart-btn"
+onclick="addToCart('Free Fire 1080 Diamonds',8.20)">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+<button
+class="favorite-btn"
+onclick="addToWishlist('Free Fire 1080 Diamonds',8.20)">
+
+<i class="fa-solid fa-heart"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================
+SHOPPING CART DRAWER
+========================================== -->
+
+<div
+id="cartDrawer"
+class="cart-drawer">
+
+<div class="drawer-header">
+
+<h2>
+
+Shopping Cart
+
+</h2>
+
+<button
+onclick="closeCart()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div
+id="cartItems"
+class="drawer-body">
+
+<div class="empty-cart">
+
+Your cart is empty.
+
+</div>
+
+</div>
+
+<div class="drawer-footer">
+
+<div class="cart-total">
+
+<span>
+
+Total
+
+</span>
+
+<strong
+id="cartTotal">
+
+0.00 USD
+
+</strong>
+
+</div>
+
+<button
+class="checkout-btn"
+onclick="openCheckout()">
+
+Proceed To Checkout
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+WISHLIST DRAWER
+========================================== -->
+
+<div
+id="wishlistDrawer"
+class="cart-drawer">
+
+<div class="drawer-header">
+
+<h2>
+
+Wishlist
+
+</h2>
+
+<button
+onclick="closeWishlist()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div
+id="wishlistItems"
+class="drawer-body">
+
+<div class="empty-cart">
+
+Wishlist is empty.
+
+</div>
+
+</div>
+
+<div class="drawer-footer">
+
+<button
+class="checkout-btn"
+onclick="closeWishlist()">
+
+Continue Shopping
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+PROFILE MODAL
+========================================== -->
+
+<div
+id="profileModal"
+class="modal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+
+My Profile
+
+</h2>
+
+<button
+onclick="closeProfile()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div class="modal-body">
+
+<div class="input-group">
+
+<label>
+
+Username
+
+</label>
+
+<input
+id="profileUsername"
+type="text"
+readonly>
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Email
+
+</label>
+
+<input
+id="profileEmail"
+type="email"
+readonly>
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Member Since
+
+</label>
+
+<input
+id="profileJoined"
+type="text"
+readonly>
+
+</div>
+
+<button
+class="auth-btn"
+onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+CHECKOUT MODAL
+========================================== -->
+
+<div
+id="checkoutModal"
+class="modal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+
+Checkout
+
+</h2>
+
+<button
+onclick="closeCheckout()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div class="modal-body">
+
+<div class="input-group">
+
+<label>
+
+Full Name
+
+</label>
+
+<input
+id="checkoutName"
+type="text"
+placeholder="Your Name">
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Email
+
+</label>
+
+<input
+id="checkoutEmail"
+type="email"
+placeholder="Email Address">
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Payment Method
+
+</label>
+
+<select
+id="paymentMethod"
+style="width:100%;height:56px;padding:0 18px;background:#1A1A24;color:#FFFFFF;border:1px solid #262630;border-radius:14px;">
+
+<option>
+
+Wallet Balance
+
+</option>
+
+<option>
+
+USDT TRC20
+
+</option>
+
+<option>
+
+USDT BEP20
+
+</option>
+
+<option>
+
+TON
+
+</option>
+
+</select>
+
+</div>
+
+<button
+class="auth-btn"
+onclick="placeOrder()">
+
+Place Order
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+<div class="modal-box">
+<div class="modal-header"><h2>Login</h2><button onclick="closeLoginModal()">&times;</button></div>
+<div class="modal-body">
+<div class="input-group"><label>Email</label><input id="loginEmail" type="email"></div>
+<div class="input-group"><label>Password</label><input id="loginPassword" type="password"></div>
+<button class="auth-btn" onclick="login()">Login</button>
+<div class="switch-auth"><a href="#" onclick="switchToRegister()">Create account</a></div>
+</div></div></div>
+
+<!-- Register Modal -->
+<div id="registerModal" class="modal">
+<div class="modal-box">
+<div class="modal-header"><h2>Register</h2><button onclick="closeRegisterModal()">&times;</button></div>
+<div class="modal-body">
+<div class="input-group"><label>Username</label><input id="registerUsername" type="text"></div>
+<div class="input-group"><label>Email</label><input id="registerEmail" type="email"></div>
+<div class="input-group"><label>Password</label><input id="registerPassword" type="password"></div>
+<button class="auth-btn" onclick="register()">Register</button>
+<div class="switch-auth"><a href="#" onclick="switchToLogin()">Already have an account</a></div>
+</div></div></div>
+
+<!-- ==========================================
+FOOTER
+========================================== -->
+
+<footer
+id="footer">
+
+<div class="container">
+
+<div
+style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;">
+
+<div>
+
+<h2
+style="color:var(--gold);margin-bottom:20px;">
+
+CardBridge
+
+</h2>
+
+<p
+style="color:var(--gray);line-height:1.9;">
+
+Professional Global Marketplace for Digital Products.
+
+Buy PUBG UC, Telegram Premium, Telegram Stars,
+
+Gift Cards and many more with secure payments
+
+and instant delivery.
+
+</p>
+
+</div>
+
+<div>
+
+<h3
+style="margin-bottom:20px;">
+
+Marketplace
+
+</h3>
+
+<a
+href="#featuredProducts"
+style="display:block;margin-bottom:14px;color:var(--gray);">
+
+Products
+
+</a>
+
+<a
+href="#categories"
+style="display:block;margin-bottom:14px;color:var(--gray);">
+
+Categories
+
+</a>
+
+<a
+href="#"
+onclick="openCart()"
+style="display:block;margin-bottom:14px;color:var(--gray);">
+
+Shopping Cart
+
+</a>
+
+<a
+href="#"
+onclick="openProfile()"
+style="display:block;color:var(--gray);">
+
+My Account
+
+</a>
+
+</div>
+
+<div
+id="support">
+
+<h3
+style="margin-bottom:20px;">
+
+Support
+
+</h3>
+
+<p
+style="margin-bottom:14px;color:var(--gray);">
+
+24 / 7 Customer Support
+
+</p>
+
+<p
+style="margin-bottom:14px;color:var(--gray);">
+
+Instant Delivery
+
+</p>
+
+<p
+style="margin-bottom:14px;color:var(--gray);">
+
+Secure Payments
+
+</p>
+
+<p
+style="color:var(--gray);">
+
+Worldwide Service
+
+</p>
+
+</div>
+
+<div>
+
+<h3
+style="margin-bottom:20px;">
+
+Follow Us
+
+</h3>
+
+<div
+style="display:flex;gap:15px;">
+
+<button
+style="width:50px;height:50px;border-radius:14px;background:#1A1A24;color:white;">
+
+<i class="fa-brands fa-telegram"></i>
+
+</button>
+
+<button
+style="width:50px;height:50px;border-radius:14px;background:#1A1A24;color:white;">
+
+<i class="fa-brands fa-discord"></i>
+
+</button>
+
+<button
+style="width:50px;height:50px;border-radius:14px;background:#1A1A24;color:white;">
+
+<i class="fa-brands fa-instagram"></i>
+
+</button>
+
+<button
+style="width:50px;height:50px;border-radius:14px;background:#1A1A24;color:white;">
+
+<i class="fa-brands fa-x-twitter"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<hr
+style="margin:60px 0;border-color:var(--border);">
+
+<div
+style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+
+<p
+style="color:var(--gray);">
+
+© 2026 CardBridge. All Rights Reserved.
+
+</p>
+
+<p
+style="color:var(--gray);">
+
+Powered by CardBridge Technology.
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- ==========================================
+FLOATING BUTTONS
+========================================== -->
+
+<button
+id="scrollTop"
+onclick="scrollTopPage()"
+style="position:fixed;bottom:25px;right:25px;width:58px;height:58px;border-radius:50%;background:var(--gold);color:#111;font-size:22px;display:none;z-index:9999;">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<button
+id="floatingCart"
+onclick="openCart()"
+style="position:fixed;bottom:95px;right:25px;width:58px;height:58px;border-radius:50%;background:var(--primary);color:#fff;font-size:21px;z-index:9999;">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<span
+id="cartCount"
+class="badge"
+style="position:absolute;top:-6px;right:-6px;">
+
+0
+
+</span>
+
+</button>
+
+<button
+id="floatingWishlist"
+onclick="openWishlist()"
+style="position:fixed;bottom:165px;right:25px;width:58px;height:58px;border-radius:50%;background:#EF4444;color:#fff;font-size:21px;z-index:9999;">
+
+<i class="fa-solid fa-heart"></i>
+
+<span
+id="wishlistCount"
+class="badge"
+style="position:absolute;top:-6px;right:-6px;">
+
+0
+
+</span>
+
+</button>
+
+<script>
+ /*=========================================
+CONFIGURATION
+=========================================*/
+
+const API_BASE = "http://localhost:3000/api";
+
+let token = localStorage.getItem("token") || "";
+let currentUser = null;
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+/*=========================================
+WINDOW LOAD
+=========================================*/
+
+window.addEventListener("load", () => {
+
+    hideLoader();
+
+    updateCartBadge();
+
+    updateWishlistCount();
+
+    renderCart();
+
+    renderWishlist();
+
+    loadTheme();
+
+    if (token) {
+
+        loadProfile();
+
+    }
+
+});
+
+/*=========================================
+LOADER
+=========================================*/
+
+function hideLoader() {
+
+    setTimeout(() => {
+
+        const loader = document.getElementById("loader");
+
+        if (loader) {
+
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+
+        }
+
+    }, 700);
+
+}
+
+/*=========================================
+MOBILE MENU
+=========================================*/
+
+function toggleMobileMenu() {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if (menu.style.display === "block") {
+
+        menu.style.display = "none";
+
+    } else {
+
+        menu.style.display = "block";
+
+    }
+
+}
+
+/*=========================================
+LOGIN MODAL
+=========================================*/
+
+function showLogin() {
+
+    document.getElementById("loginModal").style.display = "flex";
+
+}
+
+function closeLoginModal() {
+
+    document.getElementById("loginModal").style.display = "none";
+
+}
+
+function showRegister() {
+
+    document.getElementById("registerModal").style.display = "flex";
+
+}
+
+function closeRegisterModal() {
+
+    document.getElementById("registerModal").style.display = "none";
+
+}
+
+function switchToRegister() {
+
+    closeLoginModal();
+    showRegister();
+
+}
+
+function switchToLogin() {
+
+    closeRegisterModal();
+    showLogin();
+
+}
+
+/*=========================================
+PROFILE
+=========================================*/
+
+function openProfile() {
+
+    document.getElementById("profileModal").style.display = "flex";
+
+    loadProfileData();
+
+}
+
+function closeProfile() {
+
+    document.getElementById("profileModal").style.display = "none";
+
+}
+
+/*=========================================
+CHECKOUT
+=========================================*/
+
+function openCheckout() {
+
+    document.getElementById("checkoutModal").style.display = "flex";
+
+}
+
+function closeCheckout() {
+
+    document.getElementById("checkoutModal").style.display = "none";
+
+}
+
+/*=========================================
+DRAWERS
+=========================================*/
+
+function openCart() {
+
+    document.getElementById("cartDrawer").classList.add("active");
+
+    renderCart();
+
+}
+
+function closeCart() {
+
+    document.getElementById("cartDrawer").classList.remove("active");
+
+}
+
+function openWishlist() {
+
+    document.getElementById("wishlistDrawer").classList.add("active");
+
+    renderWishlist();
+
+}
+
+function closeWishlist() {
+
+    document.getElementById("wishlistDrawer").classList.remove("active");
+
+}
+
+/*=========================================
+CLICK OUTSIDE MODALS
+=========================================*/
+
+window.onclick = function (e) {
+
+    if (e.target === document.getElementById("loginModal")) {
+
+        closeLoginModal();
+
+    }
+
+    if (e.target === document.getElementById("registerModal")) {
+
+        closeRegisterModal();
+
+    }
+
+    if (e.target === document.getElementById("profileModal")) {
+
+        closeProfile();
+
+    }
+
+    if (e.target === document.getElementById("checkoutModal")) {
+
+        closeCheckout();
+
+    }
+
+};
+
+/*=========================================
+ESC KEY
+=========================================*/
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        closeLoginModal();
+
+        closeRegisterModal();
+
+        closeProfile();
+
+        closeCheckout();
+
+        closeCart();
+
+        closeWishlist();
+
+    }
+
+});
+   /*=========================================
+AUTH API
+=========================================*/
+
+async function register(){
+
+    const username=document.getElementById("registerUsername").value.trim();
+
+    const email=document.getElementById("registerEmail").value.trim();
+
+    const password=document.getElementById("registerPassword").value;
+
+    if(!username||!email||!password){
+
+        alert("Please fill all fields.");
+
+        return;
+
+    }
+
+    try{
+
+        const res=await fetch(API_BASE+"/auth/register",{
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":"application/json"
+
+            },
+
+            body:JSON.stringify({
+
+                username,
+
+                email,
+
+                password
+
+            })
+
+        });
+
+        const data=await res.json();
+
+        if(!res.ok){
+
+            alert(data.message||"Registration failed");
+
+            return;
+
+        }
+
+        alert("Account created successfully.");
+
+        closeRegisterModal();
+
+        showLogin();
+
+    }catch(err){
+
+        console.error(err);
+
+        alert("Unable to connect to server.");
+
+    }
+
+}
+
+async function login(){
+
+    const email=document.getElementById("loginEmail").value.trim();
+
+    const password=document.getElementById("loginPassword").value;
+
+    if(!email||!password){
+
+        alert("Please enter email and password.");
+
+        return;
+
+    }
+
+    try{
+
+        const res=await fetch(API_BASE+"/auth/login",{
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":"application/json"
+
+            },
+
+            body:JSON.stringify({
+
+                email,
+
+                password
+
+            })
+
+        });
+
+        const data=await res.json();
+
+        if(!res.ok){
+
+            alert(data.message||"Login failed");
+
+            return;
+
+        }
+
+        token=data.token;
+
+        localStorage.setItem("token",token);
+
+        closeLoginModal();
+
+        loadProfile();
+
+    }catch(err){
+
+        console.error(err);
+
+        alert("Unable to connect to server.");
+
+    }
+
+}
+
+function logout(){
+
+    token="";
+
+    currentUser=null;
+
+    localStorage.removeItem("token");
+
+    closeProfile();
+
+    alert("Logged out successfully.");
+
+}
+
+async function loadProfile(){
+
+    try{
+
+        const res=await fetch(API_BASE+"/user/profile",{
+
+            headers:{
+
+                Authorization:"Bearer "+token
+
+            }
+
+        });
+
+        if(!res.ok){
+
+            return;
+
+        }
+
+        currentUser=await res.json();
+
+        loadProfileData();
+
+    }catch(err){
+
+        console.error(err);
+
+    }
+
+}
+
+function loadProfileData(){
+
+    if(!currentUser){
+
+        return;
+
+    }
+
+    document.getElementById("profileUsername").value=currentUser.username||"";
+
+    document.getElementById("profileEmail").value=currentUser.email||"";
+
+    document.getElementById("profileJoined").value=currentUser.createdAt||"";
+
+}
+/*=========================================
+SHOPPING CART
+=========================================*/
+
+function addToCart(name,price){
+
+    cart.push({
+
+        name,
+
+        price,
+
+        quantity:1
+
+    });
+
+    localStorage.setItem(
+
+        "cart",
+
+        JSON.stringify(cart)
+
+    );
+
+    updateCartBadge();
+
+    renderCart();
+
+}
+
+function removeCartItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem(
+
+        "cart",
+
+        JSON.stringify(cart)
+
+    );
+
+    updateCartBadge();
+
+    renderCart();
+
+}
+
+function updateCartBadge(){
+
+    const badge=document.getElementById("cartCount");
+
+    if(badge){
+
+        badge.textContent=cart.length;
+
+    }
+
+}
+
+function renderCart(){
+
+    const container=document.getElementById("cartItems");
+
+    const total=document.getElementById("cartTotal");
+
+    if(!container||!total){
+
+        return;
+
+    }
+
+    if(cart.length===0){
+
+        container.innerHTML=`
+
+        <div class="empty-cart">
+
+        Your cart is empty.
+
+        </div>
+
+        `;
+
+        total.textContent="0.00 USD";
+
+        return;
+
+    }
+
+    let html="";
+
+    let sum=0;
+
+    cart.forEach((item,index)=>{
+
+        sum+=item.price*item.quantity;
+
+        html+=`
+
+        <div class="cart-item">
+
+            <div>
+
+                <strong>${item.name}</strong>
+
+                <br>
+
+                ${item.quantity} × ${item.price.toFixed(2)} USD
+
+            </div>
+
+            <button onclick="removeCartItem(${index})">
+
+                <i class="fa-solid fa-trash"></i>
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+    container.innerHTML=html;
+
+    total.textContent=sum.toFixed(2)+" USD";
+
+}
+
+function buyProduct(name,price){
+
+    addToCart(name,price);
+
+    openCart();
+
+}
+
+function placeOrder(){
+
+    if(cart.length===0){
+
+        alert("Your cart is empty.");
+
+        return;
+
+    }
+
+    alert("Order placed successfully.");
+
+    cart=[];
+
+    localStorage.removeItem("cart");
+
+    updateCartBadge();
+
+    renderCart();
+
+    closeCheckout();
+
+    closeCart();
+
+}
+/*=========================================
+WISHLIST
+=========================================*/
+
+function addToWishlist(name,price){
+
+    const exists=wishlist.find(item=>item.name===name);
+
+    if(exists){
+
+        alert("Already added to wishlist.");
+
+        return;
+
+    }
+
+    wishlist.push({
+
+        name,
+
+        price
+
+    });
+
+    localStorage.setItem(
+
+        "wishlist",
+
+        JSON.stringify(wishlist)
+
+    );
+
+    updateWishlistCount();
+
+    renderWishlist();
+
+}
+
+function removeWishlistItem(index){
+
+    wishlist.splice(index,1);
+
+    localStorage.setItem(
+
+        "wishlist",
+
+        JSON.stringify(wishlist)
+
+    );
+
+    updateWishlistCount();
+
+    renderWishlist();
+
+}
+
+function updateWishlistCount(){
+
+    const badge=document.getElementById("wishlistCount");
+
+    if(badge){
+
+        badge.textContent=wishlist.length;
+
+    }
+
+}
+
+function renderWishlist(){
+
+    const container=document.getElementById("wishlistItems");
+
+    if(!container){
+
+        return;
+
+    }
+
+    if(wishlist.length===0){
+
+        container.innerHTML=`
+
+        <div class="empty-cart">
+
+            Wishlist is empty.
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    let html="";
+
+    wishlist.forEach((item,index)=>{
+
+        html+=`
+
+        <div class="cart-item">
+
+            <div>
+
+                <strong>${item.name}</strong>
+
+                <br>
+
+                ${item.price.toFixed(2)} USD
+
+            </div>
+
+            <div style="display:flex;gap:10px;">
+
+                <button onclick="addToCart('${item.name}',${item.price})">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </button>
+
+                <button onclick="removeWishlistItem(${index})">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    container.innerHTML=html;
+
+}
+
+/*=========================================
+SCROLL TO TOP
+=========================================*/
+
+window.addEventListener("scroll",()=>{
+
+    const btn=document.getElementById("scrollTop");
+
+    if(!btn){
+
+        return;
+
+    }
+
+    if(window.scrollY>300){
+
+        btn.style.display="flex";
+
+    }else{
+
+        btn.style.display="none";
+
+    }
+
+});
+
+function scrollTopPage(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+/*=========================================
+THEME
+=========================================*/
+
+function loadTheme(){
+
+    const savedTheme=localStorage.getItem("theme");
+
+    if(savedTheme==="light"){
+
+        document.body.classList.add("light-theme");
+
+    }
+
+}
+
+function toggleTheme(){
+
+    document.body.classList.toggle("light-theme");
+
+    if(
+
+        document.body.classList.contains("light-theme")
+
+    ){
+
+        localStorage.setItem("theme","light");
+
+    }else{
+
+        localStorage.setItem("theme","dark");
+
+    }
+
+}
+
+/*=========================================
+SEARCH PRODUCTS
+=========================================*/
+
+function searchProducts(){
+
+    const input=document
+
+    .getElementById("searchInput")
+
+    .value
+
+    .toLowerCase();
+
+    const cards=document.querySelectorAll(".product-card");
+
+    cards.forEach(card=>{
+
+        const text=card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            card.style.display="block";
+
+        }else{
+
+            card.style.display="none";
+
+        }
+
+    });
+
+}
+
+/*=========================================
+SMOOTH NAVIGATION
+=========================================*/
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+
+    link.addEventListener("click",function(e){
+
+        const target=this.getAttribute("href");
+
+        if(
+
+            target==="#"||
+
+            target===""
+
+        ){
+
+            return;
+
+        }
+
+        const section=document.querySelector(target);
+
+        if(section){
+
+            e.preventDefault();
+
+            section.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+        }
+
+    });
+
+});
+
+
+function goProducts(){
+ document.getElementById("featuredProducts")?.scrollIntoView({behavior:"smooth"});
+}
+function filterCategory(name){
+ document.querySelectorAll(".product-card").forEach(card=>{
+   card.style.display = card.innerText.toLowerCase().includes(name.toLowerCase()) ? "block":"none";
+ });
+}
+
+/*=========================================
+UTILITIES
+=========================================*/
+
+function formatPrice(price){
+
+    return Number(price).toFixed(2)+" USD";
+
+}
+
+function showToast(message){
+
+    alert(message);
+
+}
+
+console.log(
+
+    "CardBridge Loaded Successfully."
+
+);
+/*=========================================
+INITIALIZE
+=========================================*/
+
+updateCartBadge();
+
+updateWishlistCount();
+
+renderCart();
+
+renderWishlist();
+
+if(token){
+
+    loadProfile();
+
+}
+
+console.log("CardBridge Ready");
+
+</script>
+
+</body>
+
+</html>
